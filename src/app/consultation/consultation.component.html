@@ -1,0 +1,36 @@
+<div class="ui-g bg-1" style="margin-top: 10px;">
+  <table class="table table-striped">
+    <thead class="thead-dark">
+      <tr>
+        <th class="ui-g-1 pointer" (click)="sort('numElement')">N°
+            <i class="fa" [ngClass]="{'fa-sort-desc': (column == 'id' && !isDesc), 'fa-sort-asc': (column == 'id' && isDesc)}"></i>
+        </th>
+        <th class="ui-g-6 pointer" (click)="sort('title')">Titre
+            <i class="fa" [ngClass]="{'fa-sort-desc': (column == 'title' && !isDesc), 'fa-sort-asc': (column == 'title' && isDesc)}"></i>
+        </th>
+        <th class="ui-g-2 pointer" (click)="sort('category')">Catégorie
+            <i class="fa" [ngClass]="{'fa-sort-desc': (column == 'cat' && !isDesc), 'fa-sort-asc': (column == 'cat' && isDesc)}"></i>
+        </th>
+        <th class="ui-g-3 pointer" (click)="sort('institutes')">Partenaires
+            <i class="fa" [ngClass]="{'fa-sort-desc': (column == 'inst' && !isDesc), 'fa-sort-asc': (column == 'inst' && isDesc)}"></i>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let article of articles">
+        <td class="ui-g-1">{{article.numElement}}</td>
+        <td class="ui-g-6">{{article.title}}</td>
+        <td class="ui-g-2">{{article.category}}</td>
+        <td class="ui-g-2">{{article.institutes}}</td>
+        <td class="ui-g-1 ui-g">
+          <button class="btn ui-g-6" type="button" routerLink="/edit" [class.selected]="article === selectedArticle" (click)="onSelect">
+            <i class="fa fa-edit"></i>
+          </button>
+          <button class="btn ui-g-6" type="button" mwlConfirmationPopover [popoverTitle]="popoverErase" [popoverMessage]="popoverMessage" [placement]="center" (confirm)="delete(article)" (cancel)="cancelClicked = true">
+            <i class="fa fa-trash"></i>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

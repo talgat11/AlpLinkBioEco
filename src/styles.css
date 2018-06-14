@@ -1,1 +1,12 @@
-/* You can add global styles to this file, and also import other style files */
+/*@import '../node_modules/font-awesome/css/font-awesome.css';*/
+.bg-1 {
+  margin-left: 200px;
+  margin-right: 200px;
+}
+.pointer {
+  cursor: pointer;
+}
+.form-group {
+  margin-left: 200px;
+  margin-right: 200px;
+}

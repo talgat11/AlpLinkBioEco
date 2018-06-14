@@ -1,0 +1,67 @@
+<form>
+  <div class="form-group">
+    <!--<label for="id">ID</label>-->
+    <!--<input #articleID type="number" id="id" style="width: 100%;">-->
+    <label for="title">Titre</label>
+    <input #articleTitle type="text" id="title" style="width: 100%;">
+    <p></p>
+    <label for="category">Catégorie</label>
+    <p-dropdown #articleCat [options]="categories" [(ngModel)]="selectedCategory" name="category" placeholder="Sélectionner la catégorie" optionLabel="value" id="category" [style]="{'width':'100%'}"></p-dropdown>
+    <p></p>
+    <label for="institut">Partenaire</label>
+    <div class="ui-g">
+      <div class="ui-g-2"><p-checkbox name="inst" value="PICC" label="PICC" [(ngModel)]="selectedItems" inputId="PICC"></p-checkbox></div>
+      <div class="ui-g-2"><p-checkbox name="inst" value="Biz-Up" label="Biz-Up" [(ngModel)]="selectedItems" inputId="Biz-Up"></p-checkbox></div>
+    </div>
+    <div class="ui-g" id="institut">
+      <div class="ui-g-2"><p-checkbox name="inst" value="CABW" label="CABW" [(ngModel)]="selectedItems" inputId="CABW"></p-checkbox></div>
+      <div class="ui-g-2"><p-checkbox name="inst" value="Poly4Eml" label="Poly4Eml" [(ngModel)]="selectedItems" inputId="Poly4Eml"></p-checkbox></div>
+    </div>
+    <div class="ui-g">
+      <div class="ui-g-2"><p-checkbox name="inst" value="CSALP" label="CSALP" [(ngModel)]="selectedItems" inputId="CSALP"></p-checkbox></div>
+      <div class="ui-g-2"><p-checkbox name="inst" value="CFL" label="CFL" [(ngModel)]="selectedItems" inputId="CFL"></p-checkbox></div>
+    </div>
+    <div class="ui-g">
+      <div class="ui-g-2"><p-checkbox name="inst" value="BIOPRO" label="BIOPRO" [(ngModel)]="selectedItems" inputId="BIOPRO"></p-checkbox></div>
+      <div class="ui-g-2"><p-checkbox name="inst" value="HIT" label="HIT" [(ngModel)]="selectedItems" inputId="HIT"></p-checkbox></div>
+    </div>
+    <div class="ui-g">
+      <div class="ui-g-2"><p-checkbox name="inst" value="TZH" label="TZH" [(ngModel)]="selectedItems" inputId="TZH"></p-checkbox></div>
+      <div class="ui-g-2"><p-checkbox name="inst" value="LGCA" label="LGCA" [(ngModel)]="selectedItems" inputId="LGCA"></p-checkbox></div>
+    </div>
+    <div class="ui-g">
+      <div class="ui-g-2"><p-checkbox name="inst" value="Plastipolis" label="Plastipolis" [(ngModel)]="selectedItems" inputId="Plastipolis"></p-checkbox></div>
+      <div class="ui-g-2"><p-checkbox name="inst" value="CDIF" label="CDIF" [(ngModel)]="selectedItems" inputId="CDIF"></p-checkbox></div>
+    </div>
+    <div class="ui-g">
+      <div class="ui-g-2"><p-checkbox name="inst" value="MIZS" label="MIZS" [(ngModel)]="selectedItems" inputId="MIZS"></p-checkbox></div>
+      <div class="ui-g-2"><p-checkbox name="inst" value="CCB" label="CCB" [(ngModel)]="selectedItems" inputId="CCB"></p-checkbox></div>
+    </div>
+    <label for="author">Auteur</label>
+    <input #articleAuthor type="text" id="author" style="width: 100%;">
+    <p></p>
+    <label for="img">Image URL</label>
+    <input #articleImg type="text" id="img" style="width: 100%;">
+    <!--<image-upload url="api/articles"></image-upload>-->
+    <button type="button" class="btn-dark">Uploader une image</button>
+    <p></p>
+    <label for="pdf">PDF URL</label>
+    <input #articlePdf type="text" id="pdf" style="width: 100%;">
+    <button type="button" class="btn-dark">Uploader un PDF</button>
+    <p></p>
+    <label for="link">Lien</label>
+    <input #articleLink type="text" id="link" style="width: 100%;">
+    <p></p>
+    <label for="summary">Résumé</label>
+    <input #articleSummary type="text" id="summary" style="width: 100%;">
+    <p></p>
+    <label for="text">Texte</label>
+    <input #articleText type="text" id="text" style="width: 100%;">
+    <p></p>
+    <div><p-checkbox name="group1" value="Important" label="Important" [(ngModel)]="selectedImportance" inputId="Important"></p-checkbox></div>
+    <div><p-checkbox name="group1" value="Publié" label="Publié" [(ngModel)]="selectedImportance "inputId="Publié"></p-checkbox></div>
+    <button class="btn-dark" (click)="addAll(genId(articles), articleTitle.value, selectedCategory, selectedItems, articleImg.value, articlePdf.value, articleLink.value, articleSummary.value, articleText.value, selectedImportance)" routerLink="/consultation">Add</button>
+
+  </div>
+</form>
+
