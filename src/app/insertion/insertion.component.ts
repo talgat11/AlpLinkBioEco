@@ -3,6 +3,7 @@ import { SelectItem } from 'primeng/api';
 import { Articles } from '../articles';
 import { InsertionService } from '../insertion.service';
 import { HttpClient } from '@angular/common/http';
+import { Categories } from '../categories';
 
 @Component({
   selector: 'app-insertion',
@@ -16,20 +17,21 @@ export class InsertionComponent implements OnInit {
   selectedItems: any;
   selectedImportance: any;
 
-  categories: SelectItem[];
+  categories: Categories;
   selectedCategory: string;
 
   constructor(private insertion: InsertionService, private http: HttpClient) {
-    this.categories = [
-      {value:'Results'},
-      {value:'Publication'},
-      {value:'Events'},
-      {value:'Media'}
-    ];
+    // this.categories = [
+    //   {value:'Results'},
+    //   {value:'Publication'},
+    //   {value:'Events'},
+    //   {value:'Media'}
+    // ];
   }
 
   ngOnInit() {
     this.getArticles();
+    this.getCategories();
   }
 
   // imgUpload() {
@@ -37,6 +39,8 @@ export class InsertionComponent implements OnInit {
   //     .subscribe(articles => this.articles.push(articles));
   // }
   getCategories(): void {
+    this.insertion.getCategory()
+      .subscribe(categories => this.categories = categories);
 
   }
 

@@ -6,7 +6,13 @@
     <input #articleTitle type="text" id="title" style="width: 100%;">
     <p></p>
     <label for="category">Catégorie</label>
-    <p-dropdown #articleCat [options]="categories" [(ngModel)]="selectedCategory" name="category" placeholder="Sélectionner la catégorie" optionLabel="value" id="category" [style]="{'width':'100%'}"></p-dropdown>
+    <!--<p-dropdown #articleCat [options]="categories" [(ngModel)]="selectedCategory" name="category" placeholder="Sélectionner la catégorie" optionLabel="name" id="category" [style]="{'width':'100%'}"></p-dropdown>-->
+    <div ngbDropdown class="d-inline-block">
+      <button class="btn btn-secondary" id="category"></button>
+      <div ngbDropdownMenu *ngFor="let category of categories">
+        <button class="dropdown-item">{{category.name}}</button>
+      </div>
+    </div>
     <p></p>
     <label for="institut">Partenaire</label>
     <div class="ui-g">
@@ -61,7 +67,6 @@
     <div><p-checkbox name="group1" value="Important" label="Important" [(ngModel)]="selectedImportance" inputId="Important"></p-checkbox></div>
     <div><p-checkbox name="group1" value="Publié" label="Publié" [(ngModel)]="selectedImportance "inputId="Publié"></p-checkbox></div>
     <button class="btn-dark" (click)="addAll(genId(articles), articleTitle.value, selectedCategory, selectedItems, articleImg.value, articlePdf.value, articleLink.value, articleSummary.value, articleText.value, selectedImportance)" routerLink="/consultation">Add</button>
-
   </div>
 </form>
 

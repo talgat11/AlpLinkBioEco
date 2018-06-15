@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Articles } from './articles';
+import { Categories } from './categories';
 import { HttpClient, HttpHeaders} from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import { catchError, map, tap} from 'rxjs/operators';
@@ -14,13 +15,18 @@ const httpOptions = {
 @Injectable()
 export class InsertionService {
 
+  categories: Categories[];
   public static error = new EventEmitter<any>();
   private static articleUrl = 'https://interreg.humantech.institute/api/api.php/elements';
+  private static categoryUrl = 'https://interreg.humantech.institute/api/api.php/list';
   private articlesUrl = 'https://interreg.humantech.institute/api/api.php/elements';
   static extractData(res: Response) {
     const body = res;
     return body || {};
-
+  }
+  static extractCategory(res: Response) {
+    let body = <Categories[]>res.json.categories;
+    return body || [];
   }
 
   constructor(private http: HttpClient) {
@@ -37,6 +43,11 @@ export class InsertionService {
    getArticles() {
     return this.http.get(InsertionService.articleUrl, {})
       .map(InsertionService.extractData).catch(this.handleErrors);
+  }
+
+  getCategory() {
+    return this.http.get(InsertionService.categoryUrl, {})
+      .map(InsertionService.extractCategory).catch(this.handleErrors);
   }
 
   handleErrors(error: Response | any) {
